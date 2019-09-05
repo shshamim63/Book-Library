@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+    crossorigin="anonymous" />
+  <link rel="stylesheet" href="./assets/css/main.css">
+  <title>Document</title>
+</head>
+<body class="bgimg">
+  <div class="container">
+    <h1 class="display-2 text-center text-success">Book Library</h1>
+    <hr/>
+    <div class="row">
+      <div class="col-md-4 offset-md-4">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModalCenter">
+            <i class="fas fa-plus-square"></i> Add book
+        </button>
+      </div>        
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content bg-info">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Enter Book Information</h5>
+              <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <input type="text" class="form-control" id="title" placeholder="Enter book title">
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" id="author" placeholder="Enter author name">
+                </div>
+                <div class="form-group">
+                  <input type="number" class="form-control" id="pages" min="0" placeholder="Enter book pages">
+                </div>
+                <div class="form-group">
+                  <label for="bookReadStatus">Book read status</label>
+                  <select class="form-control" id="bookReadStatus">
+                    <option>Not Started yet</option>
+                    <option>Finished</option>
+                    <option>Reading</option>
+                  </select>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Add</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- table content -->
+    <section class="card my-4">
+        <div class="card-body">
+          <table class="table text-center">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Book ID</th>
+                <th scope="col">Title</th>
+                <th scope="col">Author</th>
+                <th scope="col">Pages</th>
+                <th scope="col">Status</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="bookData">
+              <tr class="bg-danger">
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+                <td>@mdo</td>
+                <td>
+                  <button type="button" class="btn btn-sm btn-warning"><i class="fas fa-dice"></i> Change status</button>
+                  <button type="button" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></button>
+                </td>
+              </tr>
+              <tr class="bg-success">
+                  <th scope="row">1</th>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                  <td>@mdo</td>
+                  <td>@mdo</td>
+                  <td>
+                    <button type="button" class="btn btn-sm btn-warning"><i class="fas fa-dice"></i> Change status</button>
+                    <button type="button" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></button>
+                  </td>
+                </tr>
+                <tr class="bg-info">
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                    <td>@mdo</td>
+                    <td>
+                      <button type="button" class="btn btn-sm btn-warning"><i class="fas fa-dice"></i> Change status</button>
+                      <button type="button" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></button>
+                    </td>
+                  </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="./assets/js/main.js"></script>
+</body>
+</html>
