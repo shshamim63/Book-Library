@@ -5,13 +5,17 @@ body, html {
 
 .bgimg {
     /* The image used */
-    background-image: url("/assets/images/KIiEkW.jpg");
-  
+    background-image: url("../images/KIiEkW.jpg");
+
     /* Full height */
-    height: 100%; 
-  
+    height: 100%;
+
     /* Center and scale the image nicely */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+  }
+
+  .table-marg {
+    margin-bottom: 0;
   }
