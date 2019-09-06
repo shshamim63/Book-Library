@@ -19,3 +19,7 @@ body, html {
   .table-marg {
     margin-bottom: 0;
   }
+
+  .border-marg {
+    padding: 0.3rem !important;
+  }
