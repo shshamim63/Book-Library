@@ -11,21 +11,27 @@ class Book {
 }
   
 function addBookToLibrary() {
-  let title = document.getElementById("title").value;
-  let author = document.getElementById("author").value;
-  let pageNumbers = document.getElementById("pages").value;
-  let readingStatus = document.getElementById("bookReadStatus").value;
-  let book = new Book(title, author, pageNumbers, readingStatus);
+  const title = document.getElementById("title").value;
+  const author = document.getElementById("author").value;
+  const pageNumbers = document.getElementById("pages").value;
+  const readingStatus = document.getElementById("bookReadStatus").value;
+  const book = new Book(title, author, pageNumbers, readingStatus);
   bookList.push(book);
-  console.log(bookList);
+}
+
+function clearInputData() {
+  document.getElementById("title").value = "";
+  document.getElementById("author").value = "";
+  document.getElementById("pages").value = "";
+  document.getElementById("bookReadStatus").value = "";
 }
 
 function render() {
   if (bookList.length > 0) {
-    let contentBody = document.querySelector("#bookData");
-    let datas = "";
+    const contentBody = document.querySelector("#bookData");
+    let html = "";
     for (const item of bookList) {
-      datas += template(
+      html += template(
         item.bookId,
         item.title,
         item.author,
@@ -33,7 +39,7 @@ function render() {
         item.readingStatus
       );
     }
-    contentBody.innerHTML = datas;
+    contentBody.innerHTML = html;
   }
 }
 
@@ -60,6 +66,9 @@ function template(id, title, author, pageNumbers, readingStatus){
 }
 
 {
-  document.getElementById('add').addEventListener("click", addBookToLibrary());
-  render();
+  document.getElementById('add').addEventListener("click",() => {
+    addBookToLibrary();
+    clearInputData();
+    render();
+  });
 }
