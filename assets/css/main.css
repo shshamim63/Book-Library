@@ -4,22 +4,27 @@ body, html {
 }
 
 .bgimg {
-    /* The image used */
-    background-image: url("../images/KIiEkW.jpg");
+  /* The image used */
+  background-image: url("../images/KIiEkW.jpg");
 
-    /* Full height */
-    height: 100%;
+  /* Full height */
+  height: 100%;
 
-    /* Center and scale the image nicely */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
-  .table-marg {
-    margin-bottom: 0;
-  }
+.table-marg {
+  margin-bottom: 0;
+}
 
-  .border-marg {
-    padding: 0.3rem !important;
-  }
+.border-marg {
+  padding: 0.3rem !important;
+}
+
+.h-font {
+  font-family: 'Modak', cursive;
+  color: rgba(70, 156, 242);
+}
