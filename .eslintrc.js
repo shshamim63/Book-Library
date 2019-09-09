@@ -14,5 +14,7 @@ module.exports = {
     ecmaVersion: 2018,
   },
   rules: {
+    "no-unused-vars": ["warn"],
+    "arrow-parens": ["off"]
   },
 };
