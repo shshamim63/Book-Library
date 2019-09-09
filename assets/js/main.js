@@ -10,20 +10,23 @@ class Book {
   }
 }
   
-function addBookToLibrary() {
+function addBookToLibrary( args ) {
+  const book = new Book(...args);
+  bookList.push(book);
+}
+
+function loadBookInfo(){
   const title = document.getElementById("title").value;
   const author = document.getElementById("author").value;
   const pageNumbers = document.getElementById("pages").value;
   const readingStatus = document.getElementById("bookReadStatus").value;
-  const book = new Book(title, author, pageNumbers, readingStatus);
-  bookList.push(book);
+  return [title, author, pageNumbers, readingStatus];
 }
 
 function clearInputData() {
   document.getElementById("title").value = "";
   document.getElementById("author").value = "";
   document.getElementById("pages").value = "";
-  document.getElementById("bookReadStatus").value = "";
 }
 
 function render() {
@@ -57,18 +60,49 @@ function template(id, title, author, pageNumbers, readingStatus){
             <td>${title}</td>
             <td>${author}</td>
             <td>${pageNumbers}</td>
-            <td>${readingStatus}</td>
+            <td id = "readingstatus-${id}">${readingStatus}</td>
             <td>
-              <button type="button" id="change-${id}" class="btn btn-sm btn-warning"><i class="fas fa-dice"></i> Change status</button>
-              <button type="button" id="destroy-${id}" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></button>
+              <button type="button" id="change-${id}" class="btn btn-sm btn-warning statusbtn"><i class="fas fa-dice"></i> Change status</button>
+              <button type="button" id="destroy-${id}" class="btn btn-sm btn-danger deletebtn"><i class="fas fa-trash-alt"></i></button>
             </td>
           </tr>`
 }
 
-{
-  document.getElementById('add').addEventListener("click",() => {
-    addBookToLibrary();
-    clearInputData();
-    render();
+function bookInfoUpdate(changedStatus, id) {
+  bookList.find( eachbook => eachbook.bookId === id).readingStatus = changedStatus;
+}
+
+function changeStatus(id) {
+  const possibleStatus = [ "Not Started yet", "Finished", "Reading" ];
+  let bookId = id.split("-")[1];
+  let currentStatus = document.querySelector(`#readingstatus-${bookId}`);
+  console.log(currentStatus);
+  if (currentStatus.innerText === possibleStatus[0]) {
+    bookInfoUpdate(possibleStatus[1], bookId);
+    currentStatus.innerText = possibleStatus[1];
+  } else if(currentStatus.innerText === possibleStatus[1]){
+    bookInfoUpdate(possibleStatus[2], bookId);
+    currentStatus.innerText = possibleStatus[2];
+  } else {
+    bookInfoUpdate(possibleStatus[0], bookId);
+    currentStatus.innerText = possibleStatus[0];
+  }
+}
+
+function readingStatusChangeEvent() {
+  let changeBtnList =  Array.from(document.querySelectorAll(".statusbtn"));
+  changeBtnList.forEach(element => {
+    element.addEventListener("click",() => changeStatus(element.id));
   });
 }
+
+
+
+document.getElementById('add').addEventListener("click",() => {
+  addBookToLibrary(loadBookInfo());
+  clearInputData();
+  render();
+});
+readingStatusChangeEvent();
+render();
+// deleteBookEvent();
