@@ -1,6 +1,8 @@
 # Book-Library
 This is a simple library web-based app where user can add books title, author name, number of pages and current reading status.
 
+[Live Demo](https://bookslibrary.netlify.com/)
+
 ## Technical tool
 
 - JavaScript
