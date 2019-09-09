@@ -46,6 +46,21 @@ function render() {
   }
 }
 
+function bookIndexOf(id) {
+  return bookList.findIndex(i => i.bookId === id);
+}
+
+function deleteFromList(id){
+  bookList.splice(id, 1);
+}
+
+function deleteBook(deleteElement) {
+  let bookId = deleteElement.id.split("-")[1];
+  deleteFromList(bookIndexOf(bookId));
+  let elem = document.querySelector(`#row-${bookId}`);
+  elem.parentNode.removeChild(elem);
+}
+
 function bookInfoUpdate(changedStatus, id) {
   bookList.find( eachbook => eachbook.bookId === id).readingStatus = changedStatus;
 }
@@ -55,15 +70,19 @@ function changeStatus(curBtnId) {
   const possibleStatus = [ "Not Started yet", "Finished", "Reading" ];
   let bookId = curBtnId.id.split("-")[1];
   let currentStatus = document.querySelector(`#readingstatus-${bookId}`);
+  let currentRow = document.querySelector(`#row-${bookId}`);
   if (currentStatus.innerText === possibleStatus[0]) {
     bookInfoUpdate(possibleStatus[1], bookId);
     currentStatus.innerText = possibleStatus[1];
+    currentRow.className = "bg-success"; 
   } else if(currentStatus.innerText === possibleStatus[1]){
     bookInfoUpdate(possibleStatus[2], bookId);
     currentStatus.innerText = possibleStatus[2];
+    currentRow.className = "bg-info";
   } else {
     bookInfoUpdate(possibleStatus[0], bookId);
     currentStatus.innerText = possibleStatus[0];
+    currentRow.className = "bg-danger";
   }
 }
 
@@ -77,7 +96,7 @@ function template(id, title, author, pageNumbers, readingStatus){
   } else {
     bgcolor = "bg-info";
   }
-  return `<tr class = ${bgcolor}>
+  return `<tr class = ${bgcolor} id = "row-${id}">
             <th scope="row">${id.toUpperCase()}</th>
             <td>${title}</td>
             <td>${author}</td>
