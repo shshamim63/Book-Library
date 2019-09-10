@@ -16,17 +16,15 @@ function addBookToLibrary(args) {
 }
 
 function loadBookInfo() {
-  const title = document.getElementById('title').value;
-  const author = document.getElementById('author').value;
-  const pageNumbers = document.getElementById('pages').value;
-  const readingStatus = document.getElementById('bookReadStatus').value;
+  const title = document.querySelector('#title').value;
+  const author = document.querySelector('#author').value;
+  const pageNumbers = document.querySelector('#pages').value;
+  const readingStatus = document.querySelector('#bookReadStatus').value;
   return [title, author, pageNumbers, readingStatus];
 }
 
 function clearInputData() {
-  document.getElementById('title').value = '';
-  document.getElementById('author').value = '';
-  document.getElementById('pages').value = '';
+  document.querySelector('#info-form').reset();
 }
 
 function template({
@@ -107,6 +105,6 @@ function changeStatus(curBtnId) {
 
 document.getElementById('add').addEventListener('click', () => {
   addBookToLibrary(loadBookInfo());
-  clearInputData();
   render();
+  clearInputData();
 });
